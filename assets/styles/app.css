@@ -1,0 +1,712 @@
+/* Define new color variables based on provided palette */
+:root {
+    --dune-light: #FFFAE6;    /* Light cream for backgrounds */
+    --dune-gold: #A0825E;     /* Warm gold for buttons, accents */
+    --praia: #7E7941;         /* Olive green for secondary accents */
+    --pine: #95A7AF;          /* Cool gray-blue for text, borders */
+    --paddy: #465C6B;         /* Deep slate blue for headers, icons */
+    --porto: #15282A;         /* Dark teal for backgrounds, primary color */
+}
+
+/* Load custom font */
+@font-face {
+    font-family: 'Rosie Brown Serif Demo';
+    src: url('/fonts/RosieBrownSerifDemo.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Rosie Brown Serif Demo', 'Georgia', serif;
+    background-color: var(--dune-light);
+    color: var(--porto);
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--porto);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(21, 40, 42, 0.9);
+}
+
+.nav-logo {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-logo .logo-image {
+    width: 120px;
+    height: 60px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo .logo-image:hover {
+    transform: scale(1.1);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 1rem;
+}
+
+.navbar.scrolled .nav-content {
+    margin-top: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: var(--dune-light);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--dune-gold);
+}
+
+.nav-links i {
+    margin-right: 0.5rem;
+    color: var(--paddy);
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    visibility: visible;
+}
+
+.nav-icons .social-icons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    margin-right: auto;
+    padding: 0;
+    visibility: visible;
+}
+
+.social-icons {
+    list-style: none;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0;
+}
+
+.social-icons li {
+    display: inline-block;
+}
+
+.social-icon-svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--dune-light);
+    transition: fill 0.3s ease;
+    display: block;
+}
+
+.social-icons a:hover .social-icon-svg,
+.social-icons button:hover .social-icon-svg {
+    fill: var(--dune-gold);
+}
+
+.nav-icons button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: var(--dune-light);
+    margin: 15% auto;
+    padding: 2rem;
+    border: 1px solid var(--pine);
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: var(--porto);
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: var(--dune-gold);
+}
+
+.modal-content h2,
+.login-container h2,
+.forgot-password-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--porto);
+    text-transform: uppercase;
+}
+
+.modal-content form,
+.login-container form,
+.forgot-password-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-content label,
+.login-container label,
+.forgot-password-container label {
+    font-size: 1rem;
+    color: var(--porto);
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.modal-content input,
+.login-container input,
+.forgot-password-container input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid var(--pine);
+    border-radius: 0;
+    background: #FFFFFF;
+    color: var(--porto);
+}
+
+.modal-content .forgot-password,
+.login-container .forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--paddy);
+    text-decoration: none;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-content .forgot-password:hover,
+.login-container .forgot-password:hover {
+    color: var(--dune-gold);
+}
+
+.modal-content button,
+.login-container button,
+.forgot-password-container button {
+    background: var(--porto);
+    color: var(--dune-light);
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover,
+.login-container button:hover,
+.forgot-password-container button:hover {
+    background: var(--paddy);
+}
+
+.modal-content .register-link,
+.login-container .register-link,
+.forgot-password-container .back-to-login {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--porto);
+}
+
+.modal-content .register-link a,
+.login-container .register-link a,
+.forgot-password-container .back-to-login a {
+    color: var(--dune-gold);
+    text-decoration: none;
+}
+
+.modal-content .register-link a:hover,
+.login-container .register-link a:hover,
+.forgot-password-container .back-to-login a:hover {
+    text-decoration: underline;
+}
+
+/* Login Page Styles */
+.login-container {
+    background-color: var(--dune-light);
+    margin: 15% auto;
+    padding: 2rem;
+    border: 1px solid var(--pine);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Forgot Password Page Styles */
+.forgot-password-container {
+    background-color: var(--dune-light);
+    margin: 15% auto;
+    padding: 2rem;
+    border: 1px solid var(--pine);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.forgot-password-container p {
+    font-size: 1rem;
+    color: var(--porto);
+    margin-bottom: 1.5rem;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+}
+
+.logged-in-message {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--porto);
+}
+
+.logged-in-message a {
+    color: var(--dune-gold);
+    text-decoration: none;
+}
+
+.logged-in-message a:hover {
+    text-decoration: underline;
+}
+
+.checkbox {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.checkbox label {
+    font-size: 0.9rem;
+    color: var(--porto);
+    text-transform: none;
+}
+
+.checkbox input {
+    margin-right: 0.5rem;
+}
+
+main {
+    padding-top: 120px;
+}
+
+.countdown-section {
+    text-align: center;
+    padding: 2rem;
+    background: url('/images/background.webp') no-repeat center center;
+    background-size: cover;
+    color: var(--porto);
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.time-unit {
+    background: var(--porto);
+    color: var(--dune-light);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.time-unit span {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.newsletter-section {
+    background: var(--dune-light);
+    color: var(--porto);
+    padding: 2rem;
+    text-align: center;
+}
+
+.newsletter-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--paddy);
+}
+
+.newsletter-section p {
+    color: var(--pine);
+    margin-bottom: 1rem;
+}
+
+.newsletter-section form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.newsletter-section input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid var(--pine);
+    border-radius: 4px;
+    background: #FFFFFF;
+    color: var(--porto);
+}
+
+.newsletter-section button {
+    background: var(--dune-gold);
+    color: var(--porto);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-section button:hover {
+    background: var(--praia);
+}
+
+.legal-text {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.legal-text a {
+    color: var(--dune-gold);
+    text-decoration: none;
+}
+
+.footer {
+    background: var(--porto);
+    color: var(--dune-light);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    text-align: left;
+}
+
+.footer-column h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    color: var(--paddy);
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 0.3rem;
+}
+
+.footer-column a {
+    color: var(--dune-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--dune-gold);
+}
+
+.footer-column i {
+    margin-right: 0.5rem;
+    color: var(--paddy);
+}
+
+.contact-icon-svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--dune-light);
+    transition: fill 0.3s ease;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.footer-column a:hover .contact-icon-svg {
+    fill: var(--dune-gold);
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.payment-icons i {
+    font-size: 1.5rem;
+    color: var(--paddy);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--dune-light);
+    width: 100%;
+    max-width: 1200px;
+}
+
+.footer-copyright {
+    text-align: center;
+}
+
+.footer-copyright p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.footer-language {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-language img {
+    height: 20px;
+}
+
+.footer-language select {
+    background: var(--dune-light);
+    color: var(--porto);
+    border: 1px solid var(--pine);
+    padding: 0.3rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+.flash-success {
+    background: var(--dune-gold);
+    color: var(--porto);
+    padding: 1rem;
+    margin: 1rem auto;
+    text-align: centre;
+    max-width: 600px;
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .navbar.scrolled {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .nav-content {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .navbar.scrolled .nav-content {
+        margin-top: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-icons .social-icons {
+        gap: 1rem;
+    }
+
+    .footer-columns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        text-align: center;
+    }
+
+    .payment-icons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-logo .logo-image {
+        width: 100px;
+        height: 50px;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+    }
+
+    .social-icon-svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .countdown-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .time-unit {
+        padding: 0.5rem;
+    }
+
+    .time-unit span {
+        font-size: 1.5rem;
+    }
+
+    .newsletter-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .newsletter-section form {
+        flex-direction: column;
+    }
+
+    .newsletter-section input, .newsletter-section button {
+        width: 100%;
+    }
+
+    .modal-content,
+    .login-container,
+    .forgot-password-container {
+        margin: 20% auto;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .nav-logo .logo-image {
+        width: 80px;
+        height: 40px;
+    }
+
+    .footer-column h3 {
+        font-size: 0.9rem;
+    }
+
+    .footer-column a {
+        font-size: 0.8rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.8rem;
+    }
+
+    .modal-content,
+    .login-container,
+    .forgot-password-container {
+        margin: 30% auto;
+        padding: 1rem;
+    }
+
+    .modal-content h2,
+    .login-container h2,
+    .forgot-password-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .modal-content label,
+    .login-container label,
+    .forgot-password-container label {
+        font-size: 0.9rem;
+    }
+
+    .modal-content input,
+    .modal-content button,
+    .login-container input,
+    .login-container button,
+    .forgot-password-container input,
+    .forgot-password-container button {
+        font-size: 0.9rem;
+    }
+}
+
+.nav-logo a {
+    display: inline-block;
+}

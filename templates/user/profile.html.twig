@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Your Profile</h1>
+    <p>Email: {{ user.email }}</p>
+    <h2>Addresses</h2>
+    {% if user.addresses|length > 0 %}
+        <ul>
+            {% for address in user.addresses %}
+                <li>{{ address.street }}, {{ address.city }}, {{ address.postalCode }}, {{ address.country }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No addresses added.</p>
+    {% endif %}
+    <h2>Orders</h2>
+    {% if user.orders|length > 0 %}
+        <ul>
+            {% for order in user.orders %}
+                <li>Order #{{ order.id }} - Total: ${{ order.total }} ({{ order.status }})</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No orders placed.</p>
+    {% endif %}
+{% endblock %}

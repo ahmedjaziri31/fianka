@@ -1,0 +1,23 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Security\EmailVerifier:
+        arguments:
+            $fromEmail: '%env(FROM_EMAIL)%'
+
+    App\EventListener\TwigEventListener:
+        arguments:
+            $twig: '@twig'
+            $formFactory: '@form.factory'
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, priority: 100 }
+            

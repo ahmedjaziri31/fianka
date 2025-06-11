@@ -1,0 +1,41 @@
+# config/routes.yaml
+app:
+    resource: '../src/Controller/'
+    type: attribute  # Use 'attribute' instead of 'annotation'
+    prefix: /{_locale}
+    requirements:
+        _locale: en|fr
+    defaults:
+        _locale: fr
+    condition: "context.getMethod() in ['GET', 'POST'] and request.attributes.get('_route') != 'app_switch_language'"
+
+app_switch_language:
+    path: /switch-language
+    controller: App\Controller\LanguageController::switchLanguage
+    methods: [GET]
+
+root:
+    path: /
+    controller: App\Controller\DefaultController::index
+    defaults:
+        _locale: fr
+
+    # config/routes.yaml
+
+# config/routes.yaml
+
+app_forgot_password:
+    path: /{_locale}/forgot-password
+    controller: App\Controller\SecurityController::forgotPassword
+    defaults:
+        _locale: fr
+    requirements:
+        _locale: en|fr
+
+app_reset_password:
+    path: /{_locale}/reset-password/{token}
+    controller: App\Controller\SecurityController::resetPassword
+    defaults:
+        _locale: fr
+    requirements:
+        _locale: en|fr

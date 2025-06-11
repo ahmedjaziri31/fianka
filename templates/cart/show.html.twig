@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Your Cart</h1>
+    {% if cart and cart.cartItems|length > 0 %}
+        <ul>
+            {% for item in cart.cartItems %}
+                <li>{{ item.variant.product.name }} ({{ item.variant.size }}, {{ item.variant.color }}) - Quantity: {{ item.quantity }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+{% endblock %}

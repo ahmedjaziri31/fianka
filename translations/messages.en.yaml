@@ -1,0 +1,81 @@
+site:
+  title: Fianka - Elegant Fashion
+
+debug:
+  test: Translation Test
+
+nav:
+  logo_alt: Fianka Logo
+  savoir_faire: Expertise
+  homme: Men
+  femme: Women
+  fianka: About Fianka
+  search: Search
+  user: User Profile
+  cart: Cart
+  wishlist: Wishlist
+
+forgot_password:
+    title: "Forgot Password"
+    instructions: "Enter your email address to receive a password reset link."
+    email: "Email Address"
+    submit: "Send Reset Link"
+    back_to_login: "Back to Login"
+
+reset_password:
+    title: "Reset Password"
+    invalid_token: "The reset link is invalid or has expired."
+    resetting_for: "Resetting password for: %email%"
+    resetting: "Resetting password..."
+    new_password: "New Password"
+    submit: "Reset Password"
+    back_to_login: "Back to Login"
+countdown:
+  title: Next Launch
+  days: Days
+  hours: Hours
+  minutes: Minutes
+  seconds: Seconds
+  expired: Event Ended
+
+newsletter:
+  title: Subscribe to Our Newsletter
+  description: Stay updated with the latest collections and exclusive offers.
+  offer: Get 10% off your first purchase!
+  placeholder: Enter your email
+  subscribe: Subscribe
+  legal: By subscribing, you agree to our <a href="#">privacy policy</a>.
+  unsubscribe: You can unsubscribe at any time via the link in our emails.
+
+footer:
+  about: About
+  our_story: Our Story
+  savoir_faire: Expertise
+  our_values: Our Values
+  engagements: Our Engagements
+  vision: Our Vision
+  customer_service: Customer Service
+  contact: Contact Us
+  care_pulls: Sweater Care
+  size_guide: Size Guide
+  shipping_returns: Shipping & Returns
+  legal_mentions: Legal Notices
+  cgv: Terms of Sale
+  rgpd: GDPR
+  privacy_policy: Privacy Policy
+  contact_us: Contact Us
+  phone: +216 93 94 66 30
+  email: contact@fianka.com
+  follow_us: Follow Us
+  payment_methods: Payment Methods
+  language: Language
+  copyright: © %year% Fianka. All rights reserved.
+
+social:
+  instagram: Instagram
+  facebook: Facebook
+  tiktok: TikTok
+
+lang:
+  english: English
+  french: French

@@ -1,0 +1,80 @@
+site:
+  title: Fianka - Mode Élégante
+
+
+nav:
+  logo_alt: Logo Fianka
+  savoir_faire: Savoir-faire
+  homme: Homme
+  femme: Femme
+  fianka: Fianka 
+  search: Recherche
+  user: Profil Utilisateur
+  cart: Panier
+  wishlist: Liste de Souhaits
+ 
+forgot_password:
+    title: "Mot de passe oublié"
+    instructions: "Entrez votre adresse e-mail pour recevoir un lien de réinitialisation de mot de passe."
+    email: "Adresse e-mail"
+    submit: "Envoyer le lien de réinitialisation"
+    back_to_login: "Retour à la connexion"
+
+reset_password:
+    title: "Réinitialiser le mot de passe"
+    invalid_token: "Le lien de réinitialisation est invalide ou a expiré."
+    resetting_for: "Réinitialisation du mot de passe pour : %email%"
+    resetting: "Réinitialisation du mot de passe..."
+    new_password: "Nouveau mot de passe"
+    submit: "Réinitialiser le mot de passe"
+    back_to_login: "Retour à la connexion"
+    
+countdown:
+  title: Prochain Lancement
+  days: Jours
+  hours: Heures
+  minutes: Minutes
+  seconds: Secondes
+  expired: Événement Terminé
+
+newsletter:
+  title: Inscrivez-vous à Notre Newsletter
+  description: Restez informé des dernières collections et offres exclusives.
+  offer: Recevez 10% de réduction sur votre premier achat !
+  placeholder: Entrez votre email
+  subscribe: S'inscrire
+  legal: En vous inscrivant, vous acceptez notre <a href="#">politique de confidentialité</a>.
+  unsubscribe: Vous pouvez vous désinscrire à tout moment via le lien dans nos emails.
+
+footer:
+  about: À Propos
+  our_story: Notre Histoire
+  savoir_faire: Savoir-faire
+  our_values: Nos Valeurs
+  engagements: Nos Engagements
+  vision: Notre Vision
+  customer_service: Service Client
+  contact: Nous Contacter
+  care_pulls: Entretien des Pulls
+  size_guide: Guide des Tailles
+  shipping_returns: Livraison & Retours
+  legal_mentions: Mentions Légales
+  cgv: Conditions Générales de Vente
+  rgpd: RGPD
+  privacy_policy: Politique de Confidentialité
+  contact_us: Contactez-nous
+  phone: +216 93 94 66 30
+  email: contact@fianka.com
+  follow_us: Suivez-nous
+  payment_methods: Nos Acceptions
+  language: Langue
+  copyright: © %year% Fianka. Tous droits réservés.
+
+social:
+  instagram: Instagram
+  facebook: Facebook
+  tiktok: TikTok
+
+lang:
+  english: Anglais
+  french: Français

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Shop</h1>
+    {% if categories|length > 0 %}
+        <ul>
+            {% for category in categories %}
+                <li><a href="{{ path('app_category_show', {'id': category.id}) }}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No categories available.</p>
+    {% endif %}
+{% endblock %}

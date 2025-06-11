@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Search - Fianka Clothing{% endblock %}
+
+{% block body %}
+    <section class="search-section">
+        <h1>Search Results for "{{ query }}"</h1>
+        <form method="get" action="{{ path('app_search') }}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search products..." />
+            <button type="submit">Search</button>
+        </form>
+
+        {% if products|length > 0 %}
+            <div class="search-results">
+                {% for product in products %}
+                    <div class="product-item">
+                        <h3>{{ product.name }}</h3>
+                        {% if product.image %}
+                            <img src="{{ asset('images/' ~ product.image) }}" alt="{{ product.name }}" style="max-width: 100px;" />
+                        {% endif %}
+                        <p>{{ product.description|default('No description available') }}</p>
+                        <p>Price: ${{ product.price }}</p>
+                        <p>Stock: {{ product.stock }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No products found for "{{ query }}".</p>
+        {% endif %}
+    </section>
+{% endblock %}

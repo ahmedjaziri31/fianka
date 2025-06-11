@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fianka Clothing - Home{% endblock %}
+
+{% block body %}
+    <!-- Countdown Timer Section -->
+    <section class="countdown-section">
+        <h1>GRAND SALE</h1>
+        <div id="countdown">
+            <div class="time-unit">
+                <span id="days">00</span>
+                <p>Days</p>
+            </div>
+            <div class="time-unit">
+                <span id="hours">00</span>
+                <p>Hours</p>
+            </div>
+            <div class="time-unit">
+                <span id="minutes">00</span>
+                <p>Minutes</p>
+            </div>
+            <div class="time-unit">
+                <span id="seconds">00</span>
+                <p>Seconds</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        // Countdown Timer to April 28, 2025
+        const countdownDate = new Date('April 28, 2025 00:00:00').getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '<p>Sale Has Started!</p>';
+            }
+        };
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call to avoid delay
+    </script>
+{% endblock %}
