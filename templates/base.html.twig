@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ 'site.title'|trans }}{% endblock %}</title>
 
-    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {% block stylesheets %}{% endblock %}
 
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 
 
 </head>
@@ -17,8 +17,14 @@
     <!-- =========================== NAVBAR =========================== -->
     <header>
         <nav class="navbar" id="navbar">
+            <!-- logo on left -->
+            <div class="nav-logo">
+                <a href="{{ path('root', {'_locale': app.request.locale}) }}">
+                    <img src="{{ asset('images/image00004.gif') }}" alt="FIANKA" class="logo-image">
+                </a>
+            </div>
 
-            <!-- left links -->
+            <!-- centered navigation links -->
             <div class="nav-links">
                 <a href="#"><i class="fas fa-briefcase"></i> {{ 'nav.savoir_faire'|trans }}</a>
                 <a href="{{ path('app_category_index', {'_locale': app.request.locale}) }}"><i class="fas fa-male"></i> {{ 'nav.homme'|trans }}</a>
@@ -26,14 +32,7 @@
                 <a href="{{ path('app_about', {'_locale': app.request.locale}) }}"><i class="fas fa-info-circle"></i> {{ 'nav.fianka'|trans }}</a>
             </div>
 
-            <!-- centred logo -->
-            <div class="nav-logo">
-                <a href="{{ path('root', {'_locale': app.request.locale}) }}">
-                    <img src="{{ asset('images/fianka-logo.png') }}" alt="FIANKA" class="logo-image">
-                </a>
-            </div>
-
-            <!-- right icons -->
+            <!-- right icons (only 3 icons) -->
             <div class="nav-icons">
                 <ul class="social-icons">
                     <li>
@@ -49,11 +48,6 @@
                     <li>
                         <a href="{{ path('app_cart_show', {'_locale': app.request.locale}) }}" aria-label="{{ 'nav.cart'|trans }}">
                             <svg class="social-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('app_cart_show', {'_locale': app.request.locale}) }}" aria-label="{{ 'nav.cart'|trans }}">
-                            <svg class="social-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 24C0 10.7 10.7 0 24 0H76.1c11.4 0 22.2 5.9 28.1 15.9l46 73.1H424c13.3 0 24 10.7 24 24c0 2-.4 3.9-1.1 5.7L410.6 208H48c-13.3 0-24-10.7-24-24s10.7-24 24-24H404.1L426.7 112H137.1l-32-50.7c-1.1-1.8-3-2.9-5.1-2.9H24c-4.4 0-8 3.6-8 8s3.6 8 8 8H96.2l45.6 72.5c.5 .8 .8 1.7 .8 2.7c0 1-.3 1.9-.8 2.7L96.2 231.5H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H48c-11.4 0-22.2-5.9-28.1-15.9l-20-31.8C.3 231.9 0 231.3 0 230.7V24zM48 352c-26.5 0-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48s-21.5-48-48-48zm352 0c-26.5 0-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48s-21.5-48-48-48z"/></svg>
                         </a>
                     </li>
                 </ul>
@@ -167,56 +161,9 @@
         </div>
     </footer>
 
-    <!-- ========== PAGE-LEVEL JS (unchanged from your code) ========== -->
-    <script>
-        /* scroll shadow */
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        /* language selector */
-        document.addEventListener('DOMContentLoaded', () => {
-            const selector = document.getElementById('language-selector');
-            if (!selector) return;
-            const currentFlag = document.querySelector('.current-flag');
-            const savedLocale = localStorage.getItem('locale') || selector.value;
-            selector.value = savedLocale;
-            if (currentFlag && selector.options[selector.selectedIndex]) {
-                const opt = selector.options[selector.selectedIndex];
-                currentFlag.src = opt.getAttribute('data-flag');
-                currentFlag.alt = opt.text + ' flag';
-            }
-            selector.addEventListener('change', e => {
-                const locale = e.target.value;
-                localStorage.setItem('locale', locale);
-                window.location.href = '{{ path("app_switch_language") }}?locale=' + locale;
-            });
-        });
-
-        /* countdown */
-        function startCountdown() {
-            const countdownDate = new Date("June 30, 2025 00:00:00").getTime();
-            const countdown = setInterval(() => {
-                const now = Date.now();
-                const dist = countdownDate - now;
-                const days = Math.floor(dist / (1000*60*60*24));
-                const hours = Math.floor((dist%(1000*60*60*24))/(1000*60*60));
-                const minutes = Math.floor((dist%(1000*60*60))/(1000*60));
-                const seconds = Math.floor((dist%(1000*60))/1000);
-                document.getElementById('days').innerText    = (days   <10?'0':'')+days;
-                document.getElementById('hours').innerText   = (hours  <10?'0':'')+hours;
-                document.getElementById('minutes').innerText = (minutes<10?'0':'')+minutes;
-                document.getElementById('seconds').innerText = (seconds<10?'0':'')+seconds;
-                if (dist < 0) {
-                    clearInterval(countdown);
-                    document.getElementById('countdown').innerHTML = "<p>{{ 'countdown.expired'|trans }}</p>";
-                }
-            }, 1000);
-        }
-        document.addEventListener('DOMContentLoaded', startCountdown);
-    </script>
-
-    <script src="{{ asset('build/app.js') }}"></script>
+    <!-- ========== SIMPLE JS (No build process needed!) ========== -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    
+    {% block javascripts %}{% endblock %}
 </body>
 </html>

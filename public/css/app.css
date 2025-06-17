@@ -26,47 +26,44 @@ body {
 
 .navbar {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(135deg, var(--porto) 0%, rgba(21, 40, 42, 0.95) 100%);
-    padding: 0.8rem 3rem;
+    background: rgba(255, 250, 230, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 1rem 3rem;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 10px rgba(21, 40, 42, 0.1);
+    border-bottom: 1px solid rgba(21, 40, 42, 0.1);
     box-sizing: border-box;
 }
 
 .navbar.scrolled {
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: rgba(21, 40, 42, 0.9);
+    background: rgba(255, 250, 230, 0.98);
+    box-shadow: 0 2px 15px rgba(21, 40, 42, 0.15);
+    padding: 0.8rem 3rem;
 }
 
 .nav-logo {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    flex: 0 0 200px;
-    min-width: 200px;
 }
 
 .nav-logo .logo-image {
-    width: 120px;
-    height: 60px;
+    width: 100px;
+    height: 50px;
     display: block;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(21, 40, 42, 0.1));
 }
 
 .nav-logo .logo-image:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 6px 12px rgba(160, 130, 94, 0.3));
+    transform: scale(1.02);
+    filter: drop-shadow(0 4px 8px rgba(21, 40, 42, 0.2));
 }
 
 .nav-content {
@@ -84,92 +81,83 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 3rem;
-    flex: 1;
-    justify-content: center;
+    gap: 2.5rem;
     align-items: center;
-    max-width: 600px;
 }
 
 .nav-links a {
-    color: var(--dune-light);
+    color: var(--porto);
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
     position: relative;
-    padding: 0.6rem 1.2rem;
-    border-radius: 25px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 250, 230, 0.1);
+    padding: 0.8rem 0;
+    transition: all 0.3s ease;
     white-space: nowrap;
 }
 
-.nav-links a:first-child {
-    background: linear-gradient(135deg, var(--dune-gold), var(--praia));
-    color: var(--dune-light);
-    border: 1px solid var(--dune-gold);
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--dune-gold);
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--porto);
-    background: var(--dune-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(160, 130, 94, 0.3);
-    border: 1px solid var(--dune-gold);
+    color: var(--dune-gold);
 }
 
-.nav-links a:first-child:hover {
-    background: var(--dune-light);
-    color: var(--porto);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(160, 130, 94, 0.4);
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:first-child {
+    color: var(--dune-gold);
+    font-weight: 600;
+}
+
+.nav-links a:first-child::after {
+    width: 100%;
+    background: var(--dune-gold);
 }
 
 .nav-links i {
-    margin-right: 0.6rem;
-    font-size: 1rem;
-    transition: transform 0.3s ease;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover i {
-    transform: rotate(15deg) scale(1.1);
+    color: var(--dune-gold);
 }
 
 .nav-icons {
     display: flex;
     align-items: center;
-    flex: 0 0 200px;
-    min-width: 200px;
-    justify-content: flex-end;
 }
 
 .nav-icons .social-icons {
     display: flex;
-    gap: 1.5rem;
-    justify-content: flex-end;
+    gap: 1rem;
     align-items: center;
     padding: 0;
-    visibility: visible;
     margin: 0;
-    margin-top: 25px !important;
-    margin-right: 50px !important;
     list-style: none;
-    transition: all 0.3s ease;
 }
 
 .social-icons {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     padding: 0;
     margin: 0;
-    margin-top: 25px;
-    margin-right: 50px;
     align-items: center;
-    transition: all 0.3s ease;
 }
 
 .social-icons li {
@@ -180,52 +168,29 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    background: rgba(255, 250, 230, 0.1);
-    border: 1px solid rgba(255, 250, 230, 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    border: 1px solid var(--porto);
+    transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
-}
-
-.social-icons a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--dune-gold), var(--praia));
-    transform: scale(0);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 50%;
-}
-
-.social-icons a:hover::before {
-    transform: scale(1);
 }
 
 .social-icon-svg {
-    width: 16px;
-    height: 16px;
-    fill: var(--dune-light);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: block;
-    position: relative;
-    z-index: 2;
+    width: 14px;
+    height: 14px;
+    fill: var(--porto);
+    transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(160, 130, 94, 0.3);
-    border: 1px solid var(--dune-gold);
+    background: var(--porto);
+    border-color: var(--porto);
 }
 
 .social-icons a:hover .social-icon-svg {
     fill: var(--dune-light);
-    transform: scale(1.1);
 }
 
 .nav-icons button {
@@ -659,32 +624,19 @@ main {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .navbar {
-        flex-direction: column;
-        gap: 1rem;
+        padding: 1rem 2rem;
     }
 
     .navbar.scrolled {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .nav-content {
-        flex-direction: column;
-        gap: 1rem;
-        margin-top: 1rem;
-    }
-
-    .navbar.scrolled .nav-content {
-        margin-top: 1rem;
+        padding: 0.8rem 2rem;
     }
 
     .nav-links {
-        flex-direction: column;
-        text-align: center;
+        gap: 2rem;
     }
 
-    .nav-icons .social-icons {
-        gap: 1rem;
+    .nav-links a {
+        font-size: 0.85rem;
     }
 
     .footer-columns {
@@ -702,18 +654,38 @@ main {
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .navbar.scrolled {
+        padding: 0.8rem 1rem;
+    }
+
     .nav-logo .logo-image {
-        width: 100px;
-        height: 50px;
+        width: 90px;
+        height: 45px;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+        justify-content: center;
     }
 
     .nav-links a {
-        font-size: 1rem;
+        font-size: 0.85rem;
     }
 
     .social-icon-svg {
-        width: 20px;
-        height: 20px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .social-icons a {
+        width: 28px;
+        height: 28px;
     }
 
     .countdown-section h1 {
@@ -803,8 +775,3 @@ main {
     display: inline-block;
 }
 
-/* Social icons margins when navbar is scrolled */
-.navbar.scrolled .social-icons {
-    margin-top: 25px;
-    margin-right: 50px;
-}
